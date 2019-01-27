@@ -157,6 +157,10 @@ public class PlayerIndicatorsPlugin extends Plugin
 			{
 				color = config.getNonClanMemberColor();
 			}
+			else if (config.highlightAttackerPlayers() && player.getInteracting() == localPlayer)
+			{
+				color = config.getAttackerPlayerColor();
+			}
 			else if (config.highlightAttackablePlayers() && isWithinLevelRange(player.getCombatLevel()))
 			{
 				color = config.getAttackablePlayerColor();
@@ -220,7 +224,6 @@ public class PlayerIndicatorsPlugin extends Plugin
         }
         else
         {
-            boolean tester = playerCombatLevel >= lowerLevelBound && playerCombatLevel <= upperLevelBound;
             return (playerCombatLevel >= lowerLevelBound && playerCombatLevel <= upperLevelBound);
         }
     }

@@ -48,7 +48,8 @@ public class PlayerIndicatorsService {
 
 	public void forEachPlayer(final BiConsumer<Player, Color> consumer) {
 		if (!config.highlightOwnPlayer() && !config.drawClanMemberNames()
-				&& !config.highlightFriends() && !config.highlightNonClanMembers() && !config.highlightAttackablePlayers()) {
+				&& !config.highlightFriends() && !config.highlightNonClanMembers()
+				&& !config.highlightAttackablePlayers() && !config.highlightAttackerPlayers()) {
 			return;
 		}
 
@@ -73,9 +74,11 @@ public class PlayerIndicatorsService {
 				consumer.accept(player, config.getTeamMemberColor());
 			} else if (config.highlightNonClanMembers() && !isClanMember) {
 				consumer.accept(player, config.getNonClanMemberColor());
+            } else if (config.highlightAttackerPlayers() && player.getInteracting() == localPlayer) {
+                consumer.accept(player, config.getAttackerPlayerColor());
 			} else if (config.highlightAttackablePlayers() && isWithinLevelRange(player.getCombatLevel())) {
-				consumer.accept(player, config.getAttackablePlayerColor());
-			}
+                consumer.accept(player, config.getAttackablePlayerColor());
+            }
 		}
 	}
 
@@ -108,7 +111,6 @@ public class PlayerIndicatorsService {
 		}
 		else
 		{
-			boolean tester = playerCombatLevel >= lowerLevelBound && playerCombatLevel <= upperLevelBound;
 			return (playerCombatLevel >= lowerLevelBound && playerCombatLevel <= upperLevelBound);
 		}
 	}

@@ -141,6 +141,25 @@ public interface PlayerIndicatorsConfig extends Config
 
 	@ConfigItem(
 			position = 10,
+			keyName = "drawAttackerNames",
+			name = "Highlight attacker players",
+			description = "Configures whether or not attacker players should be highlighted"
+	)
+	default boolean highlightAttackerPlayers()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+			position = 11,
+			keyName = "attackerColor",
+			name = "Attacker player color",
+			description = "Color of attacking player names"
+	)
+	default Color getAttackerPlayerColor() { return new Color(241, 0, 108); }
+
+	@ConfigItem(
+			position = 12,
 			keyName = "drawAttackableNames",
 			name = "Highlight attackable players",
 			description = "Configures whether or not attackable players should be highlighted"
@@ -151,15 +170,15 @@ public interface PlayerIndicatorsConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 11,
+			position = 13,
 			keyName = "attackableColor",
 			name = "Attackable player color",
 			description = "Color of attackable player names"
 	)
-	default Color getAttackablePlayerColor() { return Color.ORANGE; }
+	default Color getAttackablePlayerColor() { return new Color(241, 81,- 0); }
 
 	@ConfigItem(
-		position = 12,
+		position = 14,
 		keyName = "drawPlayerTiles",
 		name = "Draw tiles under players",
 		description = "Configures whether or not tiles under highlighted players should be drawn"
@@ -170,7 +189,7 @@ public interface PlayerIndicatorsConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 13,
+		position = 15,
 		keyName = "drawOverheadPlayerNames",
 		name = "Draw names above players",
 		description = "Configures whether or not player names should be drawn above players"
@@ -181,7 +200,7 @@ public interface PlayerIndicatorsConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 14,
+		position = 16,
 		keyName = "drawMinimapNames",
 		name = "Draw names on minimap",
 		description = "Configures whether or not minimap names for players with rendered names should be drawn"
@@ -192,7 +211,7 @@ public interface PlayerIndicatorsConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 15,
+		position = 17,
 		keyName = "colorPlayerMenu",
 		name = "Colorize player menu",
 		description = "Color right click menu for players"
@@ -203,7 +222,7 @@ public interface PlayerIndicatorsConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 16,
+		position = 18,
 		keyName = "clanMenuIcons",
 		name = "Show clan ranks",
 		description = "Add clan rank to right click menu and next to player names"
